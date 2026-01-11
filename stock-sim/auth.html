@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login - StockSim</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                    <span class="logo-icon">📈</span>
+                    <span class="logo-text">StockSim</span>
+                </div>
+                <h1 id="auth-title">Create Account</h1>
+                <p id="auth-subtitle">Start your trading journey with ₹1,00,000</p>
+            </div>
+
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div class="form-group" id="name-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a strong password" required minlength="6">
+                </div>
+
+                <div class="form-group" id="confirm-password-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Re-enter password" required minlength="6">
+                </div>
+
+                <button type="submit" class="btn-full" id="submit-btn">Start Trading</button>
+            </form>
+
+            <div class="auth-footer">
+                <p id="switch-text">
+                    Already have an account?
+                    <a href="#" onclick="toggleAuthMode(event)">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StockSim</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">📈</span>
+            <span class="logo-text">StockSim</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="btn-secondary" style="border-color: var(--primary); color: var(--primary);">Dashboard</a>
+            <a href="market.html" class="btn-secondary">Market</a>
+            <a href="leaderboard.html" class="btn-secondary">Leaderboard</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="welcome">Welcome back, <span id="user-name">Trader</span>! 👋</h1>
+                <p style="color: var(--text-secondary);">Simulation Day: <span id="sim-day">1</span> | Real Time: <span id="sim-time">Week 1</span></p>
+            </div>
+        </div>
+
+        <div class="portfolio-summary">
+            <div class="summary-card">
+                <h3>CASH BALANCE</h3>
+                <div class="summary-value">₹<span id="cash-balance">1,00,000</span></div>
+            </div>
+            <div class="summary-card">
+                <h3>PORTFOLIO VALUE</h3>
+                <div class="summary-value">₹<span id="portfolio-value">0</span></div>
+            </div>
+            <div class="summary-card">
+                <h3>TOTAL WORTH</h3>
+                <div class="summary-value">₹<span id="total-worth">1,00,000</span></div>
+            </div>
+            <div class="summary-card">
+                <h3>PROFIT/LOSS</h3>
+                <div class="summary-value" id="profit-loss">
+                    <span class="positive">+₹0</span>
+                    <span style="font-size: 1rem; margin-left: 0.5rem;">(0%)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="holdings-section">
+                <div class="section-header">
+                    <h2>Your Holdings</h2>
+                    <a href="market.html" class="btn-primary" style="padding: 0.5rem 1rem;">+ Buy Stocks</a>
+                </div>
+                <div id="holdings-container">
+                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                        No holdings yet. Start by buying some stocks!
+                    </p>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="section-header">
+                    <h2>Quick Stats</h2>
+                </div>
+                <div style="background: var(--background); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">TOTAL TRADES</p>
+                    <p style="font-size: 2rem; font-weight: 700;" id="total-trades">0</p>
+                </div>
+                <div style="background: var(--background); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">STOCKS OWNED</p>
+                    <p style="font-size: 2rem; font-weight: 700;" id="stocks-owned">0</p>
+                </div>
+                <div style="background: var(--background); padding: 1.5rem; border-radius: 8px;">
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">MEMBER SINCE</p>
+                    <p style="font-size: 1rem; font-weight: 600;" id="member-since">Today</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="holdings-section" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2>Recent Transactions</h2>
+            </div>
+            <div id="transactions-container">
+                <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                    No transactions yet.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="stock-data.js"></script>
+    <script src="simulation.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
