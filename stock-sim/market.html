@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market - StockSim</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">📈</span>
+            <span class="logo-text">StockSim</span>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="btn-secondary">Dashboard</a>
+            <a href="market.html" class="btn-secondary" style="border-color: var(--primary); color: var(--primary);">Market</a>
+            <a href="leaderboard.html" class="btn-secondary">Leaderboard</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="market-container">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Stock Market</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+            💰 Cash Balance: ₹<span id="cash-balance">1,00,000</span>
+        </p>
+
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="🔍 Search stocks by name or symbol..." onkeyup="filterStocks()">
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <button class="quick-action-btn" onclick="filterByCategory('all')" style="display: inline-block; width: auto; margin-right: 0.5rem; padding: 0.75rem 1.5rem;">All</button>
+            <button class="quick-action-btn" onclick="filterByCategory('tech')" style="display: inline-block; width: auto; margin-right: 0.5rem; padding: 0.75rem 1.5rem;">Tech</button>
+            <button class="quick-action-btn" onclick="filterByCategory('finance')" style="display: inline-block; width: auto; margin-right: 0.5rem; padding: 0.75rem 1.5rem;">Finance</button>
+            <button class="quick-action-btn" onclick="filterByCategory('auto')" style="display: inline-block; width: auto; margin-right: 0.5rem; padding: 0.75rem 1.5rem;">Auto</button>
+            <button class="quick-action-btn" onclick="filterByCategory('pharma')" style="display: inline-block; width: auto; margin-right: 0.5rem; padding: 0.75rem 1.5rem;">Pharma</button>
+        </div>
+
+        <div class="stocks-grid" id="stocks-grid">
+            <p style="text-align: center; color: var(--text-secondary);">Loading stocks...</p>
+        </div>
+    </div>
+
+    <!-- Trade Modal -->
+    <div id="trade-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Trade Stock</h2>
+                <button class="close-modal" onclick="closeModal()">✕</button>
+            </div>
+            <div id="modal-body">
+                <div style="background: var(--background); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <h3 id="stock-name-modal">Stock Name</h3>
+                    <p style="color: var(--text-secondary);" id="stock-symbol-modal">SYMBOL</p>
+                    <p style="font-size: 2rem; font-weight: 700; margin-top: 1rem;" id="stock-price-modal">₹0</p>
+                </div>
+
+                <form class="trade-form" onsubmit="executeTrade(event)">
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" min="1" required onkeyup="updateTotal()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total Amount</label>
+                        <div style="background: var(--background); padding: 1rem; border-radius: 8px; font-size: 1.5rem; font-weight: 700;">
+                            ₹<span id="total-amount">0</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="btn-full" id="trade-submit-btn">Buy</button>
+                        <button type="button" class="btn-secondary" onclick="closeModal()" style="width: 100%; padding: 1rem;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="stock-data.js"></script>
+    <script src="market.js"></script>
+</body>
+</html>
